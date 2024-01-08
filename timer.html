@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-image: linear-gradient(to left, #30cfd0 0%, #330867 100%);
+      background-attachment: fixed;
+
+      
+      
+    }
+    
+    #main-content{
+      display: flex;
+      justify-content:space-around;
+      flex-direction: column;
+      align-items: center;
+      height: 200px;
+      
+    }
+    #form{
+      font-size: 23px;
+      
+
+    }
+
+    #countdown {
+      font-size: 36px;
+    }
+  </style>
+  <title>Countdown Timer</title>
+</head>
+<body>
+  <div id="main-content">
+  <h1 style="color: whitesmoke ; font-weight: 500;">Countdown Timer</h1>
+  <div id="form">
+  <label for="eventName">Event Name:</label>
+  <input type="text" id="eventName" />
+
+  
+  <label for="targetDate">Enter  Date and Time:</label>
+  <input type="datetime-local" id="targetDate" />
+  </div>
+  <button onclick="startCountdown()">Start Countdown</button>
+  </div>
+  <div id="countdown"></div>
+
+  <script>
+    function startCountdown() {
+      // Get the user input for the event name and target date
+      const eventNameInput = document.getElementById('eventName');
+      const targetDateInput = document.getElementById('targetDate');
+      
+      const eventName = eventNameInput.value;
+      const userEnteredDate = new Date(targetDateInput.value).getTime();
+
+      // Check if the user entered a valid date
+      if (isNaN(userEnteredDate)) {
+        alert('Please enter a valid date and time.');
+        return;
+      }
+
+      // Set the target date for the countdown
+      const targetDate = userEnteredDate;
+
+      function updateCountdown() {
+        const currentDate = new Date().getTime();
+        const timeDifference = targetDate - currentDate;
+
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        // Display the countdown with the event name
+        const countdownElement = document.getElementById('countdown');
+        countdownElement.innerHTML = `${eventName}: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        // Check if the countdown has reached zero
+        if (timeDifference <= 0) {
+          countdownElement.innerHTML = `${eventName}: Countdown expired!`;
+        }
+      }
+
+      // Update the countdown every second
+      setInterval(updateCountdown, 1000);
+
+      // Initial call to set the countdown on button click
+      updateCountdown();
+    }
+  </script>
+</body>
+</html>
+
