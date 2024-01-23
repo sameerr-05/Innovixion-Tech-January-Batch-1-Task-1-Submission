@@ -1,0 +1,111 @@
+body {
+    font-family: 'Arial', sans-serif;
+    
+
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);;
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9BAFD9", endColorstr="#103783", GradientType=1 );
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    width: 400px;
+    background-color: #86bcc9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #0a031a;
+}
+
+#task-container, #completed-container {
+    margin-top: 20px;
+}
+
+#tasks, #completed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task, .completed-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.completed-task {
+    opacity: 0.7;
+}
+
+#form-container {
+    margin-top: 20px;
+}
+
+#task-input {
+    
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #b2ed8f;
+    border-radius: 4px;
+    outline: none;
+}
+
+button {
+    width: 28%;
+    padding: 10px;
+    background-color: #eef3ee;
+    color: #4122c0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #89bdc9;
+}
+
+#completed-container {
+    margin-top: 40px;
+    font-size: larger;
+}
+
+#completed-container h2 {
+    text-align: center;
+    color: #114b93;
+}
+#clear-btn {
+    background-color: #eef3ee;
+    color: #4122c0;
+    border: none;
+    
+    
+}
+
+
+
+/* Responsive design */
+@media screen and (max-width: 480px) {
+    .container {
+        width: 90%;
+    }
+
+    #task-input {
+        width: 60%;
+    }
+
+    button {
+        width: 38%;
+    }
+}
